@@ -237,7 +237,8 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         }
     }
 
-    private User validateNewUsernameAndEmail(String currentUsername, String newUsername, String newEmail) throws UserNotFoundException, UsernameExistException, EmailExistException {
+    private User validateNewUsernameAndEmail(String currentUsername, String newUsername, String newEmail)
+            throws UserNotFoundException, UsernameExistException, EmailExistException {
         User userByNewUsername = findUserByUsername(newUsername);
         User userByNewEmail = findUserByEmail(newEmail);
         if(StringUtils.isNotBlank(currentUsername)) {

@@ -1,6 +1,6 @@
 package com.ddf.exception;
 
-import com.auth0.jwt.JWTExpiredException;
+import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.ddf.domain.HttpResponse;
 import com.ddf.exception.domain.*;
 import org.slf4j.Logger;
@@ -55,8 +55,8 @@ public class ExceptionHandling implements ErrorController {
         return createHttpResponse(UNAUTHORIZED, ACCOUNT_LOCKED);
     }
 
-    @ExceptionHandler(JWTExpiredException.class)
-    public ResponseEntity<HttpResponse> tokenExpiredException(JWTExpiredException exception) {
+    @ExceptionHandler(JWTVerificationException.class)
+    public ResponseEntity<HttpResponse> tokenExpiredException(JWTVerificationException exception) {
         return createHttpResponse(UNAUTHORIZED, exception.getMessage());
     }
 

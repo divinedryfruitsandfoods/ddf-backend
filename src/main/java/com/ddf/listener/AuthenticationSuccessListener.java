@@ -1,8 +1,8 @@
 package com.ddf.listener;
 
-import com.supportportal.domain.User;
-import com.supportportal.domain.UserPrincipal;
-import com.supportportal.service.LoginAttemptService;
+import com.ddf.domain.User;
+import com.ddf.domain.UserPrincipal;
+import com.ddf.service.LoginAttemptService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.EventListener;
 import org.springframework.security.authentication.event.AuthenticationSuccessEvent;
