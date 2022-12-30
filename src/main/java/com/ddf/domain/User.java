@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@Table(name="\"User\"")
+@Table(name="DDFUSER")
 public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,6 +22,7 @@ public class User implements Serializable {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
     private String email;
+    private int contactNumber;
     private String profileImageUrl;
     private Date lastLoginDate;
     private Date lastLoginDateDisplay;
