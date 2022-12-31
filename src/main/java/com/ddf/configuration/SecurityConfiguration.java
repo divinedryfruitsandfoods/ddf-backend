@@ -20,19 +20,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import static com.ddf.constant.SecurityConstant.PUBLIC_URLS;
 import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-import org.springframework.web.filter.CorsFilter;
-import java.io.File;
-import java.util.Arrays;
-import java.util.Collections;
-import static com.ddf.constant.FileConstant.USER_FOLDER;
-
-
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration {

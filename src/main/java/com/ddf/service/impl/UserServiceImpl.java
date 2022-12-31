@@ -1,6 +1,6 @@
 package com.ddf.service.impl;
 
-import com.ddf.domain.User;
+import com.ddf.domain.entity.User;
 import com.ddf.domain.UserPrincipal;
 import com.ddf.enumeration.Role;
 import com.ddf.exception.domain.*;
@@ -78,10 +78,10 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
-    public User register(String firstName, String lastName, String username, String email)
+    public User register(String firstName, String lastName, String username, String email, int contactNumber)
             throws UserNotFoundException, UsernameExistException, EmailExistException, MessagingException {
         validateNewUsernameAndEmail(EMPTY, username, email);
-        User registeredUser = buildUser(firstName, lastName, username, email);
+        User registeredUser = buildUser(firstName, lastName, username, email, contactNumber);
         userRepository.save(registeredUser);
         //LOGGER.info("New user password: " + registeredUser.getPassword());
         emailService.sendNewPasswordEmail(firstName, registeredUser.getPassword(), email);
@@ -89,8 +89,8 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
-    public User addNewUser(String firstName, String lastName, String username, String email, String role,
-                           boolean isNonLocked, boolean isActive, MultipartFile profileImage)
+    public User addNewUser(String firstName, String lastName, String username, String email,int contactNumber, String role
+                           , boolean isNonLocked, boolean isActive, MultipartFile profileImage)
             throws UserNotFoundException, UsernameExistException, EmailExistException, IOException, NotAnImageFileException {
         validateNewUsernameAndEmail(EMPTY, username, email);
         User user = new User();
@@ -100,6 +100,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         user.setLastName(lastName);
         user.setJoinDate(new Date());
         user.setUsername(username);
+        user.setContactNumber(contactNumber);
         user.setEmail(email);
         user.setPassword(encodePassword(password));
         user.setActive(isActive);
@@ -254,13 +255,14 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         }
     }
 
-    private User buildUser(String firstName, String lastName, String username, String email){
+    private User buildUser(String firstName, String lastName, String username, String email, int contactNumber){
         User user = new User();
         user.setUserId(generateUserId());
         String password = generatePassword();
         user.setFirstName(firstName);
         user.setLastName(lastName);
         user.setUsername(username);
+        user.setContactNumber(contactNumber);
         user.setEmail(email);
         user.setJoinDate(new Date());
         user.setPassword(encodePassword(password));

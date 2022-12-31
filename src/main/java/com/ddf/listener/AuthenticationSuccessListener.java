@@ -1,6 +1,5 @@
 package com.ddf.listener;
 
-import com.ddf.domain.User;
 import com.ddf.domain.UserPrincipal;
 import com.ddf.service.LoginAttemptService;
 import org.springframework.beans.factory.annotation.Autowired;

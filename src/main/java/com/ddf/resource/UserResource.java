@@ -1,7 +1,7 @@
 package com.ddf.resource;
 
 import com.ddf.domain.HttpResponse;
-import com.ddf.domain.User;
+import com.ddf.domain.entity.User;
 import com.ddf.domain.UserPrincipal;
 import com.ddf.exception.ExceptionHandling;
 import com.ddf.exception.domain.*;
@@ -59,7 +59,7 @@ public class UserResource extends ExceptionHandling {
 
     @PostMapping("/register")
     public ResponseEntity<User> register(@RequestBody User user) throws UserNotFoundException, UsernameExistException, EmailExistException, MessagingException {
-        User newUser = userService.register(user.getFirstName(), user.getLastName(), user.getUsername(), user.getEmail());
+        User newUser = userService.register(user.getFirstName(), user.getLastName(), user.getUsername(), user.getEmail(), user.getContactNumber());
         return new ResponseEntity<>(newUser, OK);
     }
 
@@ -69,11 +69,13 @@ public class UserResource extends ExceptionHandling {
                                            @RequestParam("username") String username,
                                            @RequestParam("email") String email,
                                            @RequestParam("role") String role,
+                                           @RequestParam("contactNumber") int contactNumber,
                                            @RequestParam("isActive") String isActive,
                                            @RequestParam("isNonLocked") String isNonLocked,
                                            @RequestParam(value = "profileImage", required = false) MultipartFile profileImage)
             throws UserNotFoundException, UsernameExistException, EmailExistException, IOException, NotAnImageFileException {
-        User newUser = userService.addNewUser(firstName, lastName, username,email, role, Boolean.parseBoolean(isNonLocked), Boolean.parseBoolean(isActive), profileImage);
+        User newUser = userService.addNewUser(firstName, lastName, username,
+                email, contactNumber ,role, Boolean.parseBoolean(isNonLocked), Boolean.parseBoolean(isActive), profileImage);
         return new ResponseEntity<>(newUser, OK);
     }
 

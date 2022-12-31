@@ -8,14 +8,19 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
+import java.io.File;
 import java.util.Arrays;
 import java.util.Collections;
+
+import static com.ddf.constant.FileConstant.USER_FOLDER;
 
 @SpringBootApplication
 public class DdfBackendApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(DdfBackendApplication.class, args);
+		System.out.println(USER_FOLDER);
+		new File(USER_FOLDER).mkdirs();
 	}
 
 	@Bean
