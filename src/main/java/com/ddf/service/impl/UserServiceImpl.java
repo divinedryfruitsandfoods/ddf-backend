@@ -46,11 +46,11 @@ import static org.springframework.http.MediaType.*;
 @Transactional
 @Qualifier("userDetailsService")
 public class UserServiceImpl implements UserService, UserDetailsService {
-    private Logger LOGGER = LoggerFactory.getLogger(getClass());
-    private UserRepository userRepository;
-    private BCryptPasswordEncoder passwordEncoder;
-    private LoginAttemptService loginAttemptService;
-    private EmailService emailService;
+    private final Logger LOGGER = LoggerFactory.getLogger(getClass());
+    private final UserRepository userRepository;
+    private final BCryptPasswordEncoder passwordEncoder;
+    private final LoginAttemptService loginAttemptService;
+    private final EmailService emailService;
 
     @Autowired
     public UserServiceImpl(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder, LoginAttemptService loginAttemptService, EmailService emailService) {
@@ -218,11 +218,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
     private void validateLoginAttempt(User user) {
         if(user.isNotLocked()) {
-            if(loginAttemptService.hasExceededMaxAttempts(user.getUsername())) {
-                user.setNotLocked(false);
-            } else {
-                user.setNotLocked(true);
-            }
+            user.setNotLocked(!loginAttemptService.hasExceededMaxAttempts(user.getUsername()));
         } else {
             loginAttemptService.evictUserFromLoginAttemptCache(user.getUsername());
         }

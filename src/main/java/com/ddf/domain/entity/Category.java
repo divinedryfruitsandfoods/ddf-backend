@@ -21,6 +21,7 @@ public class Category {
 
     private String sub_category_name;
 
+
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval=true)
     private List<Product> products;
 }
