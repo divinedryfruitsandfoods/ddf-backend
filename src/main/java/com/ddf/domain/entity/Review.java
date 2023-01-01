@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.Date;
+
 @Entity
 @Table(name = "review")
 @Data
@@ -15,6 +17,10 @@ public class Review {
     private int id;
 
     private String review_by;
+    private int starRating;
+    private String review_description;
+    private Date review_date;
+    // image url to be
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable=false)

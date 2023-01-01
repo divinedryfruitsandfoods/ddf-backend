@@ -19,7 +19,7 @@ public class Category {
 
     private String category_name;
 
-    private String category_description;
+    private String sub_category_name;
 
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval=true)
     private List<Product> products;

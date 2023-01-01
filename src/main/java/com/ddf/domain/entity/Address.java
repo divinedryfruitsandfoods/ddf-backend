@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Table(name="address")
 @Data
@@ -27,7 +29,9 @@ public class Address {
     @ManyToOne
     @JoinColumn(name = "user_id", nullable=false)
     private User user;
-    @OneToOne
-    @JoinColumn(name = "order_id", nullable = false)
-    private Order order;
+
+    @ManyToOne
+    @JoinColumn(name = "shipping_id", nullable=false)
+    private Shipping shipping;
+
 }

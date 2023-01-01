@@ -13,7 +13,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name="DDFUSER")
+@Table(name="users")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -33,16 +33,22 @@ public class User implements Serializable {
     private int contactNumber;
     private String profileImageUrl;
     private Date lastLoginDate;
-    private Date lastLoginDateDisplay;
+    private Date lastLoginDateDisplay; // need to be discussed
     private Date joinDate;
     private String role; //ROLE_USER{ read, edit }, ROLE_ADMIN {delete}
     private String[] authorities;
     private boolean isActive;
     private boolean isNotLocked;
+    private String ipAddress;    // to be checked
+    private boolean isEmailVerified; //
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval=true)
     private List<Address> address;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval=true)
     private List<Review> reviews;
+
+    @OneToOne
+    @JoinColumn(name = "invoice_id", nullable = false)
+    private Invoice invoice;
 }

@@ -7,7 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "order")
+@Table(name = "orders")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -26,16 +26,15 @@ public class Order {
     private int total_order_price;
 
     @OneToOne
-    @JoinColumn(name = "address_id")
-    private Address address;
+    @JoinColumn(name = "shipping_id")
+    private Shipping shipping;
 
+    @OneToOne
+    @JoinColumn(name = "invoice_id")
+    private Invoice invoice;
     @ManyToOne
     @JoinColumn(name = "product_id", nullable=false)
     private Product product;
 
-//    private Shipping shipping;
-//
-//    private Invoice invoice;
-//
 //    private Payment payment;
 }
