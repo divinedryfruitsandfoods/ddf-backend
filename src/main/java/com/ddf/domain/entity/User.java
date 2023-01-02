@@ -30,7 +30,7 @@ public class User implements Serializable {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
     private String email;
-    private int contactNumber;
+    private long contactNumber;
     private String profileImageUrl;
     private Date lastLoginDate;
     private Date lastLoginDateDisplay; // need to be discussed

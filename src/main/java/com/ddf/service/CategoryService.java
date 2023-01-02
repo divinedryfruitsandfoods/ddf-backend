@@ -12,6 +12,7 @@ import java.util.Optional;
 public interface CategoryService {
 
     Category create(Category category);
+
     Optional<Category> findCategoryByName(String category_name);
 
     Category update(Category category);

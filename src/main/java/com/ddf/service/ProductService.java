@@ -10,21 +10,16 @@ import java.util.List;
 
 public interface ProductService {
 
-    Product register(String productName, String productDescription, int productPrice, String quality, String quantity, String flavour, int weight, String weightType, String form, String createdBy, String updatedBy, String updatedOn); //throws UserNotFoundException, UsernameExistException, EmailExistException, MessagingException;
-
     List<Product> getProducts();
 
     Product findProductByProductName(String productName);
 
-    //User findUserByEmail(String email);
+    Product addNewProduct(String productName, String productImageUrl, String productDescription, int productPrice, String quality, String quantity, String flavour, int weight, String weightType, String form); //throws UserNotFoundException, UsernameExistException, EmailExistException, IOException, NotAnImageFileException;
 
-    Product addNewProduct(String productName, String productDescription, int productPrice, String quality, String quantity, String flavour, int weight, String weightType, String form, String createdBy, String updatedBy, String updatedOn); //throws UserNotFoundException, UsernameExistException, EmailExistException, IOException, NotAnImageFileException;
-
-    Product updateProduct(String currentProductName, String newProductName, String newProductDescription, String newProductPrice, String quality, String quantity, String flavour, int weight, String weightType, String form, MultipartFile profileImage); // throws UserNotFoundException, UsernameExistException, EmailExistException, IOException, NotAnImageFileException;
+    Product updateProduct(String currentProductName, String productImageUrl, String newProductName, String newProductDescription, int newProductPrice, String quality, String quantity, String flavour, int weight, String weightType, String form); // throws UserNotFoundException, UsernameExistException, EmailExistException, IOException, NotAnImageFileException;
 
     void deleteProduct(String productName) throws IOException;
 
-//    void resetPassword(String email) throws MessagingException, EmailNotFoundException;
-
-    Product updateProductImage(String productName, MultipartFile profileImage); //throws UserNotFoundException, UsernameExistException, EmailExistException, IOException, NotAnImageFileException;
+    Product updateQuantity(String productName, String quantity);
+//    Product updateProductImage(String productName, MultipartFile profileImage); //throws UserNotFoundException, UsernameExistException, EmailExistException, IOException, NotAnImageFileException;
 }

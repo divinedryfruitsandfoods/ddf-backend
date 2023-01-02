@@ -78,7 +78,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
-    public User register(String firstName, String lastName, String username, String email, int contactNumber)
+    public User register(String firstName, String lastName, String username, String email, long contactNumber)
             throws UserNotFoundException, UsernameExistException, EmailExistException, MessagingException {
         validateNewUsernameAndEmail(EMPTY, username, email);
         User registeredUser = buildUser(firstName, lastName, username, email, contactNumber);
@@ -89,7 +89,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
-    public User addNewUser(String firstName, String lastName, String username, String email,int contactNumber, String role
+    public User addNewUser(String firstName, String lastName, String username, String email,long contactNumber, String role
                            , boolean isNonLocked, boolean isActive, MultipartFile profileImage)
             throws UserNotFoundException, UsernameExistException, EmailExistException, IOException, NotAnImageFileException {
         validateNewUsernameAndEmail(EMPTY, username, email);
@@ -251,7 +251,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         }
     }
 
-    private User buildUser(String firstName, String lastName, String username, String email, int contactNumber){
+    private User buildUser(String firstName, String lastName, String username, String email, long contactNumber){
         User user = new User();
         user.setUserId(generateUserId());
         String password = generatePassword();
