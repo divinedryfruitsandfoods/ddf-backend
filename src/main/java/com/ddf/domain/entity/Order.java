@@ -19,11 +19,11 @@ public class Order {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Long id;
 
-    private String order_by;
+    private String orderBy;
 
-    private String order_placed_date;
+    private String orderPlacedDate;
 
-    private int total_order_price;
+    private int totalOrderPrice;
 
     @OneToOne
     @JoinColumn(name = "shipping_id")

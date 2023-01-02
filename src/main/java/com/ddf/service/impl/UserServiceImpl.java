@@ -83,8 +83,8 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         validateNewUsernameAndEmail(EMPTY, username, email);
         User registeredUser = buildUser(firstName, lastName, username, email, contactNumber);
         userRepository.save(registeredUser);
-        //LOGGER.info("New user password: " + registeredUser.getPassword());
-        emailService.sendNewPasswordEmail(firstName, registeredUser.getPassword(), email);
+        LOGGER.info("New user password: " + registeredUser.getPassword());
+        //emailService.sendNewPasswordEmail(firstName, registeredUser.getPassword(), email);
         return registeredUser;
     }
 

@@ -16,10 +16,10 @@ public class Review {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private int id;
 
-    private String review_by;
+    private String reviewBy;
     private int starRating;
-    private String review_description;
-    private Date review_date;
+    private String reviewDescription;
+    private Date reviewDate;
     // image url to be
 
     @ManyToOne

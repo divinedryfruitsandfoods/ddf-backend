@@ -49,6 +49,6 @@ public class User implements Serializable {
     private List<Review> reviews;
 
     @OneToOne
-    @JoinColumn(name = "invoice_id", nullable = false)
+    @JoinColumn(name = "invoice_id", nullable = true)
     private Invoice invoice;
 }

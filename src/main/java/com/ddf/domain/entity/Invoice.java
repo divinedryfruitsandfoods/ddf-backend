@@ -21,9 +21,9 @@ public class Invoice {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Long id;
 
-    private String pan_no;
+    private String panNo;
 
-    private String gst_registration_no;
+    private String gstRegistrationNo;
 
     private String billing_address;
 

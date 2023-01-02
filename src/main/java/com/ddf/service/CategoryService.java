@@ -1,28 +1,20 @@
 package com.ddf.service;
 
+import com.ddf.domain.entity.Category;
 import com.ddf.domain.entity.Product;
+import com.ddf.exception.domain.CategoryDeleteException;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 public interface CategoryService {
 
-    Product register(String productName, String productDescription, int productPrice, String quality, String quantity, String flavour, int weight, String weightType, String form, String createdBy, String updatedBy, String updatedOn); //throws UserNotFoundException, UsernameExistException, EmailExistException, MessagingException;
+    Category create(Category category);
+    Optional<Category> findCategoryByName(String category_name);
 
-    List<Product> getProducts();
+    Category update(Category category);
 
-    Product findProductByProductName(String productName);
-
-    //User findUserByEmail(String email);
-
-    Product addNewProduct(String productName, String productDescription, int productPrice, String quality, String quantity, String flavour, int weight, String weightType, String form, String createdBy, String updatedBy, String updatedOn); //throws UserNotFoundException, UsernameExistException, EmailExistException, IOException, NotAnImageFileException;
-
-    Product updateProduct(String currentProductName, String newProductName, String newProductDescription, String newProductPrice, String quality, String quantity, String flavour, int weight, String weightType, String form, MultipartFile profileImage); // throws UserNotFoundException, UsernameExistException, EmailExistException, IOException, NotAnImageFileException;
-
-    void deleteProduct(String productName) throws IOException;
-
-//    void resetPassword(String email) throws MessagingException, EmailNotFoundException;
-
-    Product updateProductImage(String productName, MultipartFile profileImage); //throws UserNotFoundException, UsernameExistException, EmailExistException, IOException, NotAnImageFileException;
+    void deleteCategory(String category_name) throws CategoryDeleteException;
 }

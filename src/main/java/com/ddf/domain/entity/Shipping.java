@@ -22,8 +22,8 @@ public class Shipping {
     private String ship_address;
     private String city;
     private String state;
-    private int pin_code;
-    private String shipped_by;
+    private int pinCode;
+    private String shippedBy;
     private boolean delivered;
 
     @OneToOne
